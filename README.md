@@ -77,7 +77,7 @@ $htmlParagraph->EchoSurround('I am as red as love and anger combined.');
 ```
 
 ## Lists
-Technically, you can use the above HthmlTag class to generate lists in HTML. However, there is a shorter, much more convenient way to do this.
+Technically, you can use the above HtmlTag class to generate lists in HTML. However, there is a shorter, much more convenient way to do this.
 
 ```PHP
 
