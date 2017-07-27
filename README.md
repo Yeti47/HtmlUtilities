@@ -13,7 +13,7 @@ include 'HtmlUtilities.php';
 // Create a new instance of the HtmlTag class and pass the type of the tag as a string.
 $htmlParagraph = new HtmlTag('p');
 
-// Now there are a number ways to work with this new tag.
+// Now there are a number of ways to work with this new tag.
 
 // Get the HTML code for an opening tag.
 $openTag = $htmlParagraph->GetFullTagOpen(); // returns '<p>'
