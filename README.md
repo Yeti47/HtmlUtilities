@@ -133,8 +133,8 @@ There's also a class for quickly generating HTML tables. Please note that curren
 
 inlcude 'HtmlUtilities.php';
 
-// Create a new HTML table with 4 rows and 2 columns.
-$htmlTable = new HtmlTable(4, 2);
+// Create a new HTML table with 3 rows and 2 columns.
+$htmlTable = new HtmlTable(3, 2);
 
 // Set the content of the table's fields by providing the index of the column and the row as well as the actual content.
 $htmlTable->SetFieldContent(0, 0, 'English');
@@ -145,7 +145,7 @@ $htmlTable->SetFieldContent(0, 2, 'Spanish');
 $htmlTable->SetFieldContent(1, 2, 'PHP es mi amigo.');
 
 // Mark the first column in each row as a table header (<th>).
-for($row = 0; $row < 4; $row++)
+for($row = 0; $row < 3; $row++)
     $htmlTable->SetHeader(0, $row);
 
 // Print the table.
