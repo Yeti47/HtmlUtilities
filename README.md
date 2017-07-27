@@ -5,9 +5,10 @@ This is just a little something I threw together to simplify my work with PHP an
 # Usage
 
 ## Simple HTML tags
-
 ```PHP
 <?php
+
+include 'HtmlUtilities.php';
 
 // Create a new instance of the HtmlTag class and pass the type of the tag as a string.
 $htmlParagraph = new HtmlTag('p');
@@ -33,17 +34,18 @@ echo $htmlCode;
 
 // If you want to output the code directly, this can be simplified even further using:
 
-$htmlParagraph->EchoSurround('This is an HTML paragraph. Yay!'); // prints the html code for the paragraph
+$htmlParagraph->EchoSurround('This is an HTML paragraph. Yay!'); // prints the HTML code for the paragraph
 
 ?>
 ```
 
 ## Attributes
-
 Of course, HTML is not really fun and hardly of any use without attributes.
 
 ```PHP
 <?php
+
+include 'HtmlUtilities.php';
 
 // Create a new HTML paragraph;
 $htmlParagraph = new HtmlTag('p');
@@ -72,4 +74,52 @@ $htmlParagraph->UpdateAttribute('style', 'color:red');
 $htmlParagraph->EchoSurround('I am as red as love and anger combined.');
 
 ?>
+```
+
+## Lists
+Technically, you can use the above HthmlTag class to generate lists in HTML. However, there is a shorter, much more convenient way to do this.
+
+```PHP
+
+<?php
+
+inlcude 'HtmlUtilities.php';
+
+// Define the data that we want to display in an HTML list.
+$listData = [ 'PHP', 'JavaScript', 'Python', 'Ruby', 'Perl' ];
+
+// Create an HTML List. The first argument in the constructor determines whether the list is ordered or unordered.
+// In this case it is unordered.
+$htmlList = new HtmlList(false, $listData);
+
+// Get the HTML code for the list.
+$htmlCode = $htmlList->GenerateList();
+
+/* $htmlCode now stores the following string:
+ *
+ * <ul>
+ *     <li>PHP</li>
+ *     <li>JavaScript</li>
+ *     <li>Python</li>
+ *     <li>Ruby</li>
+ *     <li>Perl</li>
+ * <ul>
+ *
+ */
+
+// Print the HTML code.
+echo $htmlCode;
+
+// Or output the code directly using:
+$htmlList->EchoList();
+
+// For ordered lists, we just pass true as the first argument of the constructor.
+$orderedList = new HtmlList(true, $listData);
+
+// Or we can call the SetOrdered method (
+$htmlList.SetOrdered(true);
+
+
+?>
+
 ```
