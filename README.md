@@ -37,3 +37,39 @@ $htmlParagraph->EchoSurround('This is an HTML paragraph. Yay!'); // prints the h
 
 ?>
 ```
+
+Of course, HTML is not really fun and hardly of any use without attributes.
+
+## Attributes
+
+```PHP
+<?php
+
+// Create a new HTML paragraph;
+$htmlParagraph = new HtmlTag('p');
+
+// Add a 'class' attribute with the value 'my-paragraph'.
+$htmlParagraph->CreateAttribute('class', 'my-paragraph');
+
+// Returns "<p class=\"my-paragraph\">I've got my own personal class attribute.</p>";
+$htmlCode = $htmlParagraph->EchoSurround('I've got my own personal class attribute.'); // returns
+
+// Print an HTML paragraph with the class 'my-paragraph'.
+echo $htmlCode;
+
+// Assign an additional 'style' attribute with the value 'color:blue' to the paragraph tag.
+$htmlParagraph->CreateAttribute('style', 'color:blue');
+
+// Print a paragraph with class 'my-paragraph' and BLUE font color.
+$htmlParagraph->EchoSurround('I am a blue paragraph.');
+
+// We can update the element's attributes like this:
+// Since we already printed the blue paragraph on the screen, we can safely update it's style attribute and just reuse
+// the same HTMLTag instance.
+$htmlParagraph->UpdateAttribute('style, 'color:red');
+
+// Print a paragraph with class 'my-paragraph' and RED font color.
+$htmlParagraph->EchoSurround('I am a red paragraph.');
+
+?>
+```
