@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * The base class for all HTML elements.
+ * Provides methods to conveniently manage attributes.
+ * @author Alexander Herrfurth
+ *
+ */
 abstract class HtmlElement {
 
 	// Fields
