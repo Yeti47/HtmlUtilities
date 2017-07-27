@@ -97,12 +97,12 @@ $htmlCode = $htmlList->GenerateList();
 
 /* $htmlCode now stores the following string:
  *
- * <ul>
- *     <li>PHP</li>
- *     <li>JavaScript</li>
- *     <li>Python</li>
- *     <li>Ruby</li>
- *     <li>Perl</li>
+ * <ul>\n
+ *     <li>PHP</li>\n
+ *     <li>JavaScript</li>\n
+ *     <li>Python</li>\n
+ *     <li>Ruby</li>\n
+ *     <li>Perl</li>\n
  * <ul>
  *
  */
