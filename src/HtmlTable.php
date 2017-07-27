@@ -98,6 +98,60 @@ class HtmlTable extends HtmlElement{
 		echo $this->GenerateTable();
 		
 	}
+	
+	// Static Methods
+	
+	public static function CreateFromArray($data, $columns) {
+		
+		$itemCount = count($data);
+		$rows = ceil($itemCount / $columns );
+		$table = new HtmlTable($rows, $columns);
+		
+		for($y = 0; $y < $rows; $y++) {
+			
+			for($x = 0; $x < $columns; $x++) {
+				
+				$i = $y * $columns + $x;
+				
+				if($i < $itemCount)
+					$table->SetFieldContent($x, $y, $data[$i]);
+				else
+					break;
+			}
+			
+		}
+		
+		return $table;
+		
+	}
+	
+	public static function CreateFromArray2D($data) {
+		
+		$rows = count($data);
+		$columns = 0;
+		
+		foreach($data as $row) {
+			
+			if(count($row) > $columns)
+				$columns = count($row);
+			
+		}
+		
+		$table = new HtmlTable($rows, $columns);
+		
+		for($y = 0; $y < $rows; $y++) {
+			
+			for($x = 0; $x < count($data[$y]); $x++) {
+				
+				$table->SetFieldContent($x, $y, $data[$y][$x]);
+
+			}
+			
+		}
+		
+		return $table;
+		
+	}
 
 }
 
