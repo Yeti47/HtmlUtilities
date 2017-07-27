@@ -80,7 +80,6 @@ $htmlParagraph->EchoSurround('I am as red as love and anger combined.');
 Technically, you can use the above HtmlTag class to generate lists in HTML. However, there is a shorter, much more convenient way to do this.
 
 ```PHP
-
 <?php
 
 inlcude 'HtmlUtilities.php';
@@ -119,6 +118,8 @@ $orderedList = new HtmlList(true, $listData);
 // Or we can call the SetOrdered method (
 $htmlList.SetOrdered(true);
 
+// Of course, we can also add attributes to our list just like we can with any other type of HTML element.
+$htmlList->CreateAttribute('id', 'scriptingLanguages');
 
 ?>
 
