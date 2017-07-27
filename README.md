@@ -66,7 +66,7 @@ $htmlParagraph->EchoSurround('I am a blue paragraph.');
 // We can update the element's attributes like this:
 // Since we already printed the blue paragraph on the screen, we can safely update it's style attribute and just reuse
 // the same HTMLTag instance.
-$htmlParagraph->UpdateAttribute('style, 'color:red');
+$htmlParagraph->UpdateAttribute('style', 'color:red');
 
 // Print a paragraph with class 'my-paragraph' and RED font color.
 $htmlParagraph->EchoSurround('I am a red paragraph.');
