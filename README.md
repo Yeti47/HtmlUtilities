@@ -82,7 +82,7 @@ Technically, you can use the above HtmlTag class to generate lists in HTML. Howe
 ```PHP
 <?php
 
-inlcude 'HtmlUtilities.php';
+include 'HtmlUtilities.php';
 
 // Define the data that we want to display in an HTML list.
 $listData = [ 'PHP', 'JavaScript', 'Python', 'Ruby', 'Perl' ];
@@ -131,7 +131,7 @@ There's also a class for quickly generating HTML tables. Please note that curren
 ```PHP
 <?php
 
-inlcude 'HtmlUtilities.php';
+include 'HtmlUtilities.php';
 
 // Create a new HTML table with 3 rows and 2 columns.
 $htmlTable = new HtmlTable(3, 2);
