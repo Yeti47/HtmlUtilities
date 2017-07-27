@@ -191,6 +191,7 @@ $table->EchoTable();
 
 ?>
 ```
+
 This will result in the following output:
 
 <table>
@@ -207,6 +208,7 @@ This will result in the following output:
 <td>Greek</td><td></td>
 </tr>
 </table>
+
 
 Alternatively, we can use a two dimensional array like this:
 
@@ -227,6 +229,7 @@ $table2D->EchoTable();
 ```
 
 This will leave us with the same result as the previous example.
+
 
 And again, you can add attributes to the table using the same ol' CreateAttribute method.
 
