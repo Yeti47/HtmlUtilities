@@ -171,6 +171,63 @@ In your browser, this would produce the following output:
   </tr>
 </table>
 
+Tables can also be created by providing one or two dimensional arrays:
+
+```PHP
+<?php
+include 'HtmlUtilities.php';
+
+// Create a one dimensional array containing the data for the table to generate. We'll leave the translation
+// into Greek blank, because I have no clue how to say 'hello' in Greek.
+$tableData = [ "English", "Hello", "German", "Hallo", "Spanish", "Hola", "Greek" ];
+
+// Create an instance of HtmlTable by passing the array to the static CreateFromArray method.
+// Also, we need to pass the number of columns in each row. Since the number of items in our array
+// is 7 and therefore not a multiple of 2, the leftover columns will be left empty.
+$table = HtmlTable::CreateFromArray($tableData, 2);
+
+// Print the table.
+$table->EchoTable();
+
+?>
+```
+This will result in the following output:
+
+<table>
+<tr>
+<td>English</td><td>Hello</td>
+</tr>
+<tr>
+<td>German</td><td>Hallo</td>
+</tr>
+<tr>
+<td>Spanish</td><td>Hola</td>
+</tr>
+<tr>
+<td>Greek</td><td></td>
+</tr>
+</table>
+
+Alternatively, we can use a two dimensional array like this:
+
+```PHP
+<?php
+include 'HtmlUtilities.php';
+
+// Define the two dimensional array containing the data for each row.
+$tableData2D = [ ["English", "Hello"], ["German", "Hallo"], ["Spanish", "Hola"], ["Greek"] ];
+
+// Pass the array to the static CreateFromArray2D method.
+$table2D = HtmlTable::CreateFromArray2D($tableData2D);
+
+// Print the table.
+$table2D->EchoTable();
+
+?>
+```
+
+This will leave us with the same result as the previous example.
+
 And again, you can add attributes to the table using the same ol' CreateAttribute method.
 
 ## Shorthand methods
