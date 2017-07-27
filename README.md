@@ -38,9 +38,9 @@ $htmlParagraph->EchoSurround('This is an HTML paragraph. Yay!'); // prints the h
 ?>
 ```
 
-Of course, HTML is not really fun and hardly of any use without attributes.
-
 ## Attributes
+
+Of course, HTML is not really fun and hardly of any use without attributes.
 
 ```PHP
 <?php
@@ -61,7 +61,7 @@ echo $htmlCode;
 $htmlParagraph->CreateAttribute('style', 'color:blue');
 
 // Print a paragraph with class 'my-paragraph' and BLUE font color.
-$htmlParagraph->EchoSurround('I am a blue paragraph.');
+$htmlParagraph->EchoSurround('I am as blue as Edgar Allan Poe.');
 
 // We can update the element's attributes like this:
 // Since we already printed the blue paragraph on the screen, we can safely update it's style attribute and just reuse
@@ -69,7 +69,7 @@ $htmlParagraph->EchoSurround('I am a blue paragraph.');
 $htmlParagraph->UpdateAttribute('style', 'color:red');
 
 // Print a paragraph with class 'my-paragraph' and RED font color.
-$htmlParagraph->EchoSurround('I am a red paragraph.');
+$htmlParagraph->EchoSurround('I am as red as love and anger combined.');
 
 ?>
 ```
