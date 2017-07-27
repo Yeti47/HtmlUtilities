@@ -170,3 +170,5 @@ In your browser, this would produce the following output:
     <td>PHP es mi amigo.</td>
   </tr>
 </table>
+
+And again, you can add attributes to the table using the same ol' CreateAttribute method.
