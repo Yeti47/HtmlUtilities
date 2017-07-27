@@ -172,3 +172,11 @@ In your browser, this would produce the following output:
 </table>
 
 And again, you can add attributes to the table using the same ol' CreateAttribute method.
+
+## Shorthand methods
+
+### Print a &lt;br&gt; tag:
+HtmlTag::EchoBR();
+
+### Print $n &lt;br&gt; tags:
+HtmlTag::EchoBR($n);
