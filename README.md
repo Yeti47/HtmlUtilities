@@ -180,3 +180,6 @@ HtmlTag::EchoBR();
 
 ### Print $n &lt;br&gt; tags:
 HtmlTag::EchoBR($n);
+
+# License
+The project is available under the MIT License.
