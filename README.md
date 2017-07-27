@@ -51,7 +51,7 @@ $htmlParagraph = new HtmlTag('p');
 // Add a 'class' attribute with the value 'my-paragraph'.
 $htmlParagraph->CreateAttribute('class', 'my-paragraph');
 
-// Returns "<p class=\"my-paragraph\">I've got my own personal class attribute.</p>";
+// Returns "<p class=\"my-paragraph\">I got my own personal class attribute.</p>";
 $htmlCode = $htmlParagraph->EchoSurround('I got my own personal class attribute.'); // returns
 
 // Print an HTML paragraph with the class 'my-paragraph'.
