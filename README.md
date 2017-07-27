@@ -115,7 +115,7 @@ $htmlList->EchoList();
 // For ordered lists, we just pass true as the first argument of the constructor.
 $orderedList = new HtmlList(true, $listData);
 
-// Or we can call the SetOrdered method (
+// Or we can call the SetOrdered method
 $htmlList.SetOrdered(true);
 
 // Of course, we can also add attributes to our list just like we can with any other type of HTML element.
@@ -124,3 +124,49 @@ $htmlList->CreateAttribute('id', 'scriptingLanguages');
 ?>
 
 ```
+
+## Tables
+There's also a class for quickly generating HTML tables. Please note that currently the library only supports tables where every row has the same number of columns. 
+
+```PHP
+<?php
+
+inlcude 'HtmlUtilities.php';
+
+// Create a new HTML table with 4 rows and 2 columns.
+$htmlTable = new HtmlTable(4, 2);
+
+// Set the content of the table's fields by providing the index of the column and the row as well as the actual content.
+$htmlTable->SetFieldContent(0, 0, 'English');
+$htmlTable->SetFieldContent(1, 0, 'PHP is my friend.');
+$htmlTable->SetFieldContent(0, 1, 'German');
+$htmlTable->SetFieldContent(1, 1, 'PHP ist mein Freund.');
+$htmlTable->SetFieldContent(0, 2, 'Spanish');
+$htmlTable->SetFieldContent(1, 2, 'PHP es mi amigo.');
+
+// Mark the first column in each row as a table header (<th>).
+for($row = 0; $row < 4; $row++)
+    $htmlTable->SetHeader(0, $row);
+
+// Print the table.
+$htmlTable->EchoTable();
+
+?>
+```
+
+In your browser, this would produce the following output:
+
+<table>
+  <tr>
+    <th>English</th>
+    <td>PHP is my friend.</td>
+  </tr>
+  <tr>
+    <th>German</th>
+    <td>PHP ist mein Freund.</td>
+  </tr>
+  <tr>
+    <th>Spanish</th>
+    <td>PHP es mi amigo.</td>
+  </tr>
+</table>
