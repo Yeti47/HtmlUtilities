@@ -98,6 +98,48 @@ class HtmlTable extends HtmlElement{
 	}
 	
 	/**
+	 * Marks/unmarks all fields in the table's row as headers.
+	 * @param int $rowIndex The index of the table's row.
+	 * @param string $isHeader Wether or not the fields should be marked as headers (true by default).
+	 * @return boolean True if successfull, false if an invalid row index was passed.
+	 */
+	public function SetHeaderRow($rowIndex, $isHeader = true) {
+
+	    if($rowIndex >= $this->_rows)
+	        return false;
+	    
+	    for($x = 0; $x < $this->_columns; $x++) {
+	        
+	        $this->SetHeader($x, $rowIndex, $isHeader);
+	        
+	    }
+	        
+	    return true;
+	    
+	}
+	
+	/**
+	 * Marks/unmarks all fields in the table's column as headers.
+	 * @param int $columnIndex The index of the table's column.
+	 * @param string $isHeader Wether or not the fields should be marked as headers (true by default).
+	 * @return boolean True if successfull, false if an invalid column index was passed.
+	 */
+	public function SetHeaderColumn($columnIndex, $isHeader = true) {
+	    
+	    if($rowIndex >= $this->_columns)
+	        return false;
+	    
+	    for($y = 0; $y < $this->_rows; $y++) {
+	        
+	        $this->SetHeader($columnIndex, $y, $isHeader);
+	        
+	    }
+	    
+	    return true;
+	    
+	}
+	
+	/**
 	 * Generates and returns the HTML code for this HtmlTable.
 	 * @return string The HTML code for this HtmlTable.
 	 */
