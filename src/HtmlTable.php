@@ -255,9 +255,12 @@ class HtmlTable extends HtmlElement{
 	 * @param ITableRow[] $tableRows The rows to generate the table from.
 	 * @return HtmlTable A new instance of HtmlTable generated from the given array of ITableRow objects.
 	 */
-	public static function CreateFromTableRows($tableRows) {
-	    
+	public static function CreateFromTableRows($tableRows, $tableHeaders = false) {
+	    	  
 	    $tableData = [];
+	    
+	    if($tableHeaders)
+	        $tableData[] = $tableHeaders;
 	    
 	    foreach($tableRows as $tableRow) {
 	        
@@ -265,7 +268,12 @@ class HtmlTable extends HtmlElement{
 	        
 	    }
 	    
-	    return HtmlTable::CreateFromArray2D($tableData);
+	    $table = HtmlTable::CreateFromArray2D($tableData);
+	    
+	    if($tableHeaders)
+	        $table->SetHeaderRow(0);
+	    
+	    return $table;
 	    
 	}
 
