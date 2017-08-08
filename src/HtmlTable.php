@@ -253,6 +253,7 @@ class HtmlTable extends HtmlElement{
 	/**
 	 * Generates an HtmlTable from the given ITableRow objects that provide the data for each row.
 	 * @param ITableRow[] $tableRows The rows to generate the table from.
+	 * @param string[] $tableHeaders An optional array of strings that defines the headers of the table to create.
 	 * @return HtmlTable A new instance of HtmlTable generated from the given array of ITableRow objects.
 	 */
 	public static function CreateFromTableRows($tableRows, $tableHeaders = false) {
