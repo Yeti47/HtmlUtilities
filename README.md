@@ -314,7 +314,7 @@ This would give us the following output:
 <td>John</td><td>Doe</td><td>356 Some Street - Awesometown AZ - 33617</td>
 </tr>
 <tr>
-<td>Finn</td><td>Mertens</td><td>47 Treehouse Ave. - Candy Kingtom CK - 47823</td>
+<td>Finn</td><td>Mertens</td><td>47 Treehouse Ave. - Candy Kingdom CK - 47823</td>
 </tr>
 <tr>
 <td>Laura</td><td>Kinney</td><td>23 Mutant Boulevard - Seattle WA - 98109</td>
@@ -358,7 +358,7 @@ This would result in the same output, except now our table has an additional hea
 <td>John</td><td>Doe</td><td>356 Some Street - Awesometown AZ - 33617</td>
 </tr>
 <tr>
-<td>Finn</td><td>Mertens</td><td>47 Treehouse Ave. - Candy Kingtom CK - 47823</td>
+<td>Finn</td><td>Mertens</td><td>47 Treehouse Ave. - Candy Kingdom CK - 47823</td>
 </tr>
 <tr>
 <td>Laura</td><td>Kinney</td><td>23 Mutant Boulevard - Seattle WA - 98109</td>
