@@ -232,7 +232,7 @@ This will leave us with the same result as the previous example.
 
 ### The ITableRow interface
 
-Another way to automatically generate HTML table code is to have a class implement the ITableRow interace and then pass an array of instances of that class to the HtmlTable::CreateFromTableRows method. The ITableRow interface provides the method GetTableRowData which determines how the class instance is displayed in a table.
+Another way to automatically generate HTML table code is to have a class implement the ITableRow interface and then pass an array of instances of that class to the HtmlTable::CreateFromTableRows method. The ITableRow interface provides the method GetTableRowData which determines how the class instance is displayed in a table.
 
 Let's take a look at an example. Say we have a class called Person.
 
@@ -330,7 +330,7 @@ include 'HtmlUtilities.php';
 
 // Create a few instances of Person
 $john = new Person('John', 'Doe', '356 Some Street', 'Awesometown', 'AZ', '33617');
-$finn = new Person('Finn', 'Mertens', '47 Treehouse Ave.', 'Candy Kingtom', 'CK', '47823');
+$finn = new Person('Finn', 'Mertens', '47 Treehouse Ave.', 'Candy Kingdom', 'CK', '47823');
 $laura = new Person('Laura', 'Kinney', '23 Mutant Boulevard', 'Seattle', 'WA', '98109');
 
 // Put the instances into an array for convenience
