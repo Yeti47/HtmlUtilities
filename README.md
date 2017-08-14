@@ -230,6 +230,69 @@ $table2D->EchoTable();
 
 This will leave us with the same result as the previous example.
 
+### The ITableRow interface
+
+Another way to automatically generate HTML table code is to have a class implement the ITableRow interace and then pass an array of instances of that class to the HtmlTable::CreateFromTableRows method. The ITableRow interface provides the method GetTableRowData which determines how the class instance is displayed in a table.
+
+Let's take a look at an example. Say we have a class called Person.
+
+```PHP
+<?php
+
+class Person implements ITableRow {
+
+    private $_firstname;
+    private $_lastname;
+    private $_postcode;
+    private $_city;
+    private $_street;
+    
+    public function __construct($firstname, $lastname, $street, $city, $postcode) {
+    
+        $this->_firstname = $firstname;
+        $this->_lastname = $lastname;
+        $this->_street = $street;
+        $this->_city = $city;
+        $this->_postcode = $postcode;
+       
+    
+    }
+    
+    public function GetAddress() {
+    
+        return "$this->_street - $this->_city - $this->_postcode";
+    
+    }
+
+    public function GetTableRowData() {
+        
+        return [
+        
+            $this->_firstname,
+            $this->_lastname,
+            $this->GetAddress()
+        
+        ];
+        
+    }
+
+}
+
+?>
+```
+
+As you can see, the GetTableRowData method simply returns an array that represents the content of each field in a table's row.
+With this class given, we can do something like this:
+
+```PHP
+<?php
+include 'HtmlUtilities.php';
+
+$personA = new Person('John', 'Doe', '356 Some Street', '
+
+
+?>
+```
 
 And again, you can add attributes to the table using the same ol' CreateAttribute method.
 
