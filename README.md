@@ -290,13 +290,81 @@ With this class given, we can do something like this:
 <?php
 include 'HtmlUtilities.php';
 
+// Create a few instances of Person
 $john = new Person('John', 'Doe', '356 Some Street', 'Awesometown', 'AZ', '33617');
-$finn = new Person('Finn', 'Mertens', '47 Treehouse Ave.', 'Candy Kingtom', CK', '47823');
+$finn = new Person('Finn', 'Mertens', '47 Treehouse Ave.', 'Candy Kingtom', 'CK', '47823');
 $laura = new Person('Laura', 'Kinney', '23 Mutant Boulevard', 'Seattle', 'WA', '98109');
 
+// Put the instances into an array for convenience
+$people = [ $john, $finn, $laura ];
+
+// Pass the array to the method to generate the table.
+$table = HtmlTable::CreateFromTableRows($people);
+
+// Print the table.
+$table->EchoTable();
 
 ?>
 ```
+
+This would give us the following output:
+
+<table>
+<tr>
+<td>John</td><td>Doe</td><td>356 Some Street - Awesometown AZ - 33617</td>
+</tr>
+<tr>
+<td>Finn</td><td>Mertens</td><td>47 Treehouse Ave. - Candy Kingtom CK - 47823</td>
+</tr>
+<tr>
+<td>Laura</td><td>Kinney</td><td>23 Mutant Boulevard - Seattle WA - 98109</td>
+</tr>
+</table>
+
+
+If we also want to display an additional row with headers, we can pass an optional second argument.
+
+```PHP
+<?php
+include 'HtmlUtilities.php';
+
+// Create a few instances of Person
+$john = new Person('John', 'Doe', '356 Some Street', 'Awesometown', 'AZ', '33617');
+$finn = new Person('Finn', 'Mertens', '47 Treehouse Ave.', 'Candy Kingtom', 'CK', '47823');
+$laura = new Person('Laura', 'Kinney', '23 Mutant Boulevard', 'Seattle', 'WA', '98109');
+
+// Put the instances into an array for convenience
+$people = [ $john, $finn, $laura ];
+
+// Define an array with headers to use.
+$headers = [ 'Firstname', 'Lastname', 'Address' ];
+
+// Pass the people array as well as the headers array to the method.
+$table = HtmlTable::CreateFromTableRows($people, $headers);
+
+// Print the table.
+$table->EchoTable();
+
+?>
+```
+
+This would result in the same output, except now our table has an additional header row.
+
+<table>
+<tr>
+<th>Firstname</th><th>Lastname</th><th>Address</th>
+</tr>
+<tr>
+<td>John</td><td>Doe</td><td>356 Some Street - Awesometown AZ - 33617</td>
+</tr>
+<tr>
+<td>Finn</td><td>Mertens</td><td>47 Treehouse Ave. - Candy Kingtom CK - 47823</td>
+</tr>
+<tr>
+<td>Laura</td><td>Kinney</td><td>23 Mutant Boulevard - Seattle WA - 98109</td>
+</tr>
+</table>
+
 
 And again, you can add attributes to the table using the same ol' CreateAttribute method.
 
