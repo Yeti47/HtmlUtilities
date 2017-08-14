@@ -378,4 +378,5 @@ HtmlTag::EchoBR($n);
 
 # License
 The project is available under the MIT License.
+
 Author: Alexander Herrfurth
