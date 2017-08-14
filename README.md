@@ -230,6 +230,141 @@ $table2D->EchoTable();
 
 This will leave us with the same result as the previous example.
 
+### The ITableRow interface
+
+Another way to automatically generate HTML table code is to have a class implement the ITableRow interface and then pass an array of instances of that class to the HtmlTable::CreateFromTableRows method. The ITableRow interface provides the method GetTableRowData which determines how the class instance is displayed in a table.
+
+Let's take a look at an example. Say we have a class called Person.
+
+```PHP
+<?php
+
+class Person implements ITableRow {
+
+    private $_firstname;
+    private $_lastname;
+    private $_street;
+    private $_city;
+    private $_state;
+    private $_postcode;
+    
+    public function __construct($firstname, $lastname, $street, $city, $state, $postcode) {
+    
+        $this->_firstname = $firstname;
+        $this->_lastname = $lastname;
+        $this->_street = $street;
+        $this->_city = $city;
+        $this->_state = $state;
+        $this->_postcode = $postcode;
+       
+    
+    }
+    
+    public function GetAddress() {
+    
+        return "$this->_street - $this->_city $this->_state - $this->_postcode";
+    
+    }
+
+    public function GetTableRowData() {
+        
+        return [
+        
+            $this->_firstname,
+            $this->_lastname,
+            $this->GetAddress()
+        
+        ];
+        
+    }
+
+}
+
+?>
+```
+
+As you can see, the GetTableRowData method simply returns an array that represents the content of each field in a table's row.
+With this class given, we can do something like this:
+
+```PHP
+<?php
+include 'HtmlUtilities.php';
+
+// Create a few instances of Person
+$john = new Person('John', 'Doe', '356 Some Street', 'Awesometown', 'AZ', '33617');
+$finn = new Person('Finn', 'Mertens', '47 Treehouse Ave.', 'Candy Kingdom', 'CK', '47823');
+$laura = new Person('Laura', 'Kinney', '23 Mutant Boulevard', 'Seattle', 'WA', '98109');
+
+// Put the instances into an array for convenience
+$people = [ $john, $finn, $laura ];
+
+// Pass the array to the method to generate the table.
+$table = HtmlTable::CreateFromTableRows($people);
+
+// Print the table.
+$table->EchoTable();
+
+?>
+```
+
+This would give us the following output:
+
+<table>
+<tr>
+<td>John</td><td>Doe</td><td>356 Some Street - Awesometown AZ - 33617</td>
+</tr>
+<tr>
+<td>Finn</td><td>Mertens</td><td>47 Treehouse Ave. - Candy Kingdom CK - 47823</td>
+</tr>
+<tr>
+<td>Laura</td><td>Kinney</td><td>23 Mutant Boulevard - Seattle WA - 98109</td>
+</tr>
+</table>
+
+
+If we also want to display an additional row with headers, we can pass an optional second argument.
+
+```PHP
+<?php
+include 'HtmlUtilities.php';
+
+// Create a few instances of Person
+$john = new Person('John', 'Doe', '356 Some Street', 'Awesometown', 'AZ', '33617');
+$finn = new Person('Finn', 'Mertens', '47 Treehouse Ave.', 'Candy Kingdom', 'CK', '47823');
+$laura = new Person('Laura', 'Kinney', '23 Mutant Boulevard', 'Seattle', 'WA', '98109');
+
+// Put the instances into an array for convenience
+$people = [ $john, $finn, $laura ];
+
+// Define an array with headers to use.
+$headers = [ 'Firstname', 'Lastname', 'Address' ];
+
+// Pass the people array as well as the headers array to the method.
+$table = HtmlTable::CreateFromTableRows($people, $headers);
+
+// Print the table.
+$table->EchoTable();
+
+?>
+```
+
+This would result in the same output, except now our table has an additional header row.
+
+<table>
+<tr>
+<th>Firstname</th><th>Lastname</th><th>Address</th>
+</tr>
+<tr>
+<td>John</td><td>Doe</td><td>356 Some Street - Awesometown AZ - 33617</td>
+</tr>
+<tr>
+<td>Finn</td><td>Mertens</td><td>47 Treehouse Ave. - Candy Kingdom CK - 47823</td>
+</tr>
+<tr>
+<td>Laura</td><td>Kinney</td><td>23 Mutant Boulevard - Seattle WA - 98109</td>
+</tr>
+</table>
+
 
 And again, you can add attributes to the table using the same ol' CreateAttribute method.
 
@@ -243,3 +378,4 @@ HtmlTag::EchoBR($n);
 
 # License
 The project is available under the MIT License.
+Author: Alexander Herrfurth
