@@ -292,7 +292,7 @@ include 'HtmlUtilities.php';
 
 // Create a few instances of Person
 $john = new Person('John', 'Doe', '356 Some Street', 'Awesometown', 'AZ', '33617');
-$finn = new Person('Finn', 'Mertens', '47 Treehouse Ave.', 'Candy Kingtom', 'CK', '47823');
+$finn = new Person('Finn', 'Mertens', '47 Treehouse Ave.', 'Candy Kingdom', 'CK', '47823');
 $laura = new Person('Laura', 'Kinney', '23 Mutant Boulevard', 'Seattle', 'WA', '98109');
 
 // Put the instances into an array for convenience
