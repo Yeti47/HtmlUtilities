@@ -243,16 +243,18 @@ class Person implements ITableRow {
 
     private $_firstname;
     private $_lastname;
-    private $_postcode;
-    private $_city;
     private $_street;
+    private $_city;
+    private $_state;
+    private $_postcode;
     
-    public function __construct($firstname, $lastname, $street, $city, $postcode) {
+    public function __construct($firstname, $lastname, $street, $city, $state, $postcode) {
     
         $this->_firstname = $firstname;
         $this->_lastname = $lastname;
         $this->_street = $street;
         $this->_city = $city;
+        $this->_state = $state;
         $this->_postcode = $postcode;
        
     
@@ -260,7 +262,7 @@ class Person implements ITableRow {
     
     public function GetAddress() {
     
-        return "$this->_street - $this->_city - $this->_postcode";
+        return "$this->_street - $this->_city $this->_state - $this->_postcode";
     
     }
 
@@ -288,7 +290,9 @@ With this class given, we can do something like this:
 <?php
 include 'HtmlUtilities.php';
 
-$personA = new Person('John', 'Doe', '356 Some Street', '
+$john = new Person('John', 'Doe', '356 Some Street', 'Awesometown', 'AZ', '33617');
+$finn = new Person('Finn', 'Mertens', '47 Treehouse Ave.', 'Candy Kingtom', CK', '47823');
+$laura = new Person('Laura', 'Kinney', '23 Mutant Boulevard', 'Seattle', 'WA', '98109');
 
 
 ?>
