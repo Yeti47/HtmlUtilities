@@ -65,7 +65,7 @@ class Router {
     }
     
     /**
-     * Iterates through all Routes that were specified beforehand and calls their callback function in case the URL matches
+     * Iterates over all Routes that were specified beforehand and calls their callback function in case the URL matches
      * their regular expression.
      * 
      * @return boolean True if the current URL matches at least one of the specified Routes, false otherwise.
