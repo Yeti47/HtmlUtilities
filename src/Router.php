@@ -75,11 +75,70 @@ class Router {
     
     /**
      * Sets the given Route to be the 404 Route, meaning the Route that is run when none of the specified Routes match the URL.
+     * Pass null for default behavior (http response code 404).
      * @param Route $route The Route to use in case the URL does not match any of the specified Routes.
      */
-    public function AddRoute404($route) {
+    public function SetRoute404($route) {
                 
         $this->_route404 = $route;
+        
+    }
+    
+    /**
+     * Retrieves the first Route in the set of Routes managed by this Router that is mapped to the given regular expression.
+     * @param string $expression The regular expression to search.
+     * @return Route|NULL The first Route found that uses the given regular expression. Null if there was no match.
+     */
+    public function FindRoute($expression) {
+        
+        foreach($this->_routes as $route) {
+            
+            if($route->GetExpression() == $expression)
+                return $route;
+            
+        }
+        
+        return null;
+        
+    }
+    
+    /**
+     * Retrieves all Routes in the set of Routes managed by this Router that are mapped to the given regular expression.
+     * @param string $expression The regular expression to search.
+     * @return Route[] An array of all the Routes found that use the given regular expression. An empty array if there was no match.
+     */
+    public function FindRoutes($expression) {
+        
+        $result = [];
+        
+        foreach($this->_routes as $route) {
+            
+            if($route->GetExpression() == $expression)
+                $result[] = $route;
+                
+        }
+        
+        return $result;
+        
+    }
+    
+    /**
+     * Removes the given Route from the set of Routes this Router manages if it is included.
+     * @param Route $route The Route to remove.
+     * @return boolean True if the Route was successfully removed. False if the Route was not found in the set of Routes.
+     */
+    public function RemoveRoute($route) {
+        
+        $routeIndex = array_search($route, $this->_routes, true);
+        
+        if($routeIndex !== false) {
+            
+            unset($this->_routes[$routeIndex]);
+            return true;
+            
+        }
+        
+        return false;
         
     }
     
