@@ -1,14 +1,12 @@
 
 <?php
 
-	include_once 'HtmlElement.php';
-	include_once 'HtmlTag.php';
-	include_once 'HtmlTable.php';
-	include_once 'HtmlList.php';
-	include_once 'ITableRow.php';
-	include_once 'PageContent.php';
-	include_once 'CommonCdnSources.php';
-	include_once 'Route.php';
-	include_once 'Router.php';
+spl_autoload_register('html_utilities_autoload_handler');
+
+function html_utilities_autoload_handler($className) {
+    
+    include_once __DIR__."/$classname.php";
+    
+}
 	
 ?>
