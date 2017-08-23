@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Responsible for managing URL routes and mapping them to a specified regular expression in the URL.
+ * Responsible for managing URL routes and mapping them to a specific regular expression in the URL.
  * 
  * @author Alexander Herrfurth
  *
