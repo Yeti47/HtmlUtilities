@@ -34,6 +34,13 @@ class Router {
     
     // Methods
     
+    /**
+     * Creates a new Route and adds it to the collection of Routes managed by this Router.
+     * @param string $expression The regular expression the URL should be matched against.
+     * @param callable $func The handler function to call if the URL matches the given regular expression.
+     * @param string $expressionModifiers An optional string of modifiers to use on the regular expression.
+     * @return Route The newly created Route.
+     */
     public function CreateRoute($expression, $func, $expressionModifiers = '') {
        
         $route = new Route($expression, $func, $expressionModifiers);  
@@ -43,12 +50,20 @@ class Router {
         
     }
     
+    /**
+     * Adds the given Route to the collection of Routes managed by this Router.
+     * @param Route $route The Route to add.
+     */
     public function AddRoute($route) {
         
         $this->_routes[] = $route;
         
     }
     
+    /**
+     * Creates a new 404 Route, meaning the Route that is run when none of the specified Routes match the URL.
+     * @param callable $func The callback function of the Route to create.
+     */
     public function CreateRoute404($func) {
         
         $route = new Route('_404_', $func);
@@ -58,6 +73,10 @@ class Router {
         
     }
     
+    /**
+     * Sets the given Route to be the 404 Route, meaning the Route that is run when none of the specified Routes match the URL.
+     * @param Route $route The Route to use in case the URL does not match any of the specified Routes.
+     */
     public function AddRoute404($route) {
                 
         $this->_route404 = $route;
