@@ -143,6 +143,15 @@ class Router {
     }
     
     /**
+     * Removes all Routes from this Router.
+     */
+    public function ClearRoutes() {
+        
+        $this->_routes = [];
+        
+    }
+    
+    /**
      * Iterates over all Routes that were specified beforehand and calls their callback function in case the URL matches
      * their regular expression.
      * 
