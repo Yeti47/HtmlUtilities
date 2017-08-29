@@ -159,8 +159,8 @@ class Router {
      */
     public function ProcessRoutes() {
         
-        $parsedUrl = parse_url($_SERVER['REQUEST_URI']);
-        $url = trim($parsedUrl['path'], '/');
+        $parsedUrl = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $url = trim($parsedUrl, '/');
         
         $isValidUrl = false;
         
