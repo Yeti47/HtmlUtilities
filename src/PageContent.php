@@ -33,9 +33,10 @@ class PageContent {
     
     /**
      * Renders this page with all of its content using the provided template.
+     * @param array An optional associative array that provides additional parameters that can then be used by the content. 
      * @return boolean True if the page could be rendered successfully. False otherwise.
      */
-    public function Render() {
+    public function Render($params = array()) {
         
         if(file_exists($this->_template)) {
             
