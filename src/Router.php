@@ -187,4 +187,18 @@ class Router {
         
     }
     
+    public static function GetCurrentUrl($doTrimLeft = false, $doTrimRight = false) {
+        
+        $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        
+        if($doTrimLeft)
+            $url = ltrim($url, '/');
+            
+            if($doTrimRight)
+                $url = rtrim($url, '/');
+                
+                return $url;
+                
+    }
+    
 }
