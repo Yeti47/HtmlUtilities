@@ -17,7 +17,7 @@ abstract class HtmlElement {
 	/**
 	 * Adds a new attribute to this HtmlElement. 
 	 * @param string $name The name (type) of the new attribute (eg 'class').
-	 * @param string $content The value of the new attribute.
+	 * @param string $content The value of the new attribute. Pass null for an empty attribute.
 	 * @param string $allowOverride Whether the content of an attribute should be overwritten in case it already exists. 
 	 * Overwriting the content of an existing attribute is equivalent to calling the UpdateAttribute method.
 	 * @return boolean True if the attribute was successfully created/overwritten, false otherwise.
@@ -111,7 +111,7 @@ abstract class HtmlElement {
 		if(!array_key_exists($name, $this->_attributes))
 			return "";
 		
-		return $name."=\"".$this->_attributes[$name]."\"";
+		return $name.($this->_attributes[$name] != null ? "=\"".$this->_attributes[$name]."\"" : '');
 	}
 	
 }
