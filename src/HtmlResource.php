@@ -15,7 +15,7 @@ abstract class HtmlResource {
     
     // Constructors
     
-    protected function __construct($source) {
+    public function __construct($source) {
         
         $this->_source = $source;
         
