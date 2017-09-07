@@ -68,7 +68,7 @@ class HtmlScriptResource extends HtmlResource {
      */
     public function GenerateTag() {
         
-        $tag = parent.GenerateTag();
+        $tag = parent::GenerateTag();
         $tag->CreateAttribute('src', $this->GetSource());
         
         if($this->_isAsynchronous) {

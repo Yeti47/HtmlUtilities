@@ -34,7 +34,7 @@ class HtmlLinkResource extends HtmlResource {
     
     public function GenerateTag() {
         
-        $tag = parent.GenerateTag();
+        $tag = parent::GenerateTag();
         
         $tag->CreateAttribute('rel', $this->_relation);
         $tag->CreateAttribute('href', $this->GetSource());
