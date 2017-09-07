@@ -67,7 +67,7 @@ abstract class HtmlResource {
     
     public function GetTagName() {
         
-        self::TAG_NAME;
+        return self::TAG_NAME;
         
     }
     
