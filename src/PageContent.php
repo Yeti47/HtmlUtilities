@@ -49,8 +49,8 @@ class PageContent {
             $lang = $this->_lang;
             $charset = $this->_charset;
             $title = $this->_title;
-            $styles = $this->_styles;
-            $scripts = $this->_scripts;
+            $resources = $this->_resources;
+            $resourcesHtml = $this->LoadResources();
             $contents = $this->_contents;
             
             include $this->_template;
@@ -198,7 +198,7 @@ class PageContent {
         
     }
     
-    public function LoadResources() {
+    private function LoadResources() {
         
         $htmlCode = '';
         
