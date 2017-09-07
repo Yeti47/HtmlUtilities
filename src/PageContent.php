@@ -15,8 +15,14 @@ class PageContent {
     private $_charset = 'UTF-8';
     private $_title;
     private $_template;
-    private $_styles = [];
-    private $_scripts = [];
+    
+    /**
+     * The external resources of this page.
+     * @var HtmlResource[]
+     */
+    private $_resources = [];
+//     private $_styles = [];
+//     private $_scripts = [];
     private $_contents = [];
         
     // Constructor
@@ -103,36 +109,8 @@ class PageContent {
         $this->_template = $template;
     }
 
-    /**
-     * @return string[] the $_styles
-     */
-    public function GetStyles()
-    {
-        return $this->_styles;
-    }
-
-    /**
-     * @param string[] $styles
-     */
-    public function SetStyles($styles)
-    {
-        $this->_styles = array_unique($styles);
-    }
-
-    /**
-     * @return string[] the $_scripts
-     */
-    public function GetScripts()
-    {
-        return $this->_scripts;
-    }
-
-    /**
-     * @param string[] $scripts
-     */
-    public function SetScripts($scripts)
-    {
-        $this->_scripts = array_unique($scripts);
+    public function GetResources() {
+        return $this->_resources;        
     }
 
     /**
@@ -163,78 +141,161 @@ class PageContent {
         
     }
     
-    public function AddScript($script) {
-        
-        if(!$this->HasScript($script)) {
-            
-            $this->_scripts[] = $script;
-            return true;
-            
-        }
-        
-        return false;
-        
-    }
-    
-    public function HasScript($script) {
-        
-        return in_array($script, $this->_scripts);  
-        
-    }
-    
-    public function RemoveScript($script) {
-        
-        $existingScriptIndex = array_search($script, $this->_scripts);
-        
-        if($existingScriptIndex !== false) {
-            
-            unset($this->_scripts[$existingScriptIndex]);
-            return true;
-            
-        }
-        
-        return false;
-        
-    }
-    
-    public function AddStyle($style) {
-        
-        if(!$this->HasStyle($style)) {
-            
-            $this->_styles[] = $style;
-            return true;
-            
-        }
-        
-        return false;
-        
-    }
-    
-    public function HasStyle($style) {
-        
-        return in_array($style, $this->_styles);
-        
-    }
-    
-    public function RemoveStyle($style) {
-        
-        $existingStyleIndex = array_search($style, $this->_styles);
-        
-        if($existingStyleIndex !== false) {
-            
-            unset($this->_styles[$existingStyleIndex]);
-            return true;
-            
-        }
-        
-        return false;
-        
-    }
-    
     public function HasContent($content) {
         
         return in_array($content, $this->_contents);
         
     }
+    
+    public function AddResource(HtmlResource $resource) {
+        
+        if($this->HasResource($resource)) {
+            return false;
+        }
+        
+        $this->_resources[] = $resource;
+        
+        return true;
+        
+    }
+    
+    public function RemoveResource(HtmlResource $resource) {
+        
+        $existingResourceIndex = array_search($resource, $this->_resources);
+        
+        if($existingResourceIndex !== false) {
+            
+            unset($this->_resources[$existingResourceIndex]);
+            return true;
+            
+        }
+        
+        return false;
+        
+    }
+    
+    /**
+     * Finds the first HtmlResource contained in this page that matches the given source. 
+     * @param string $source The source to search for.
+     * @return HtmlResource|NULL The first instance of HtmlResource found that matches the given source or null if no resource was found.
+     */
+    public function FindResourceBySource($source) {
+        
+        foreach($this->_resources as $resouce) {
+            
+            if($resource->GetSource() == $source)
+                return $resource;
+            
+        }
+        
+        return null;
+        
+    }
+    
+    public function HasResource($resource) {
+        
+        return in_array($resource, $this->_resources);
+        
+    }
+    
+    public function LoadResources() {
+        
+        $htmlCode = '';
+        
+        foreach($this->_resources as $resource) {
+            
+            $htmlCode .= $resource->GenerateHtml().PHP_EOL;
+            
+        }
+        
+        return $htmlCode;
+        
+    }
+    
+    public function AddScript(string $source) {
+        
+        $script = new HtmlScriptResource($source);
+        $this->AddResource($script);
+        
+        return $script;
+        
+    }
+    
+    public function AddStyle(string $source) {
+        
+        $style = new HtmlLinkResource($source, 'stylesheet');
+        $this->AddResource($style);
+        
+        return $style;
+        
+    }
+    
+//     public function AddScript($script) {
+        
+//         if(!$this->HasScript($script)) {
+            
+//             $this->_scripts[] = $script;
+//             return true;
+            
+//         }
+        
+//         return false;
+        
+//     }
+    
+//     public function HasScript($script) {
+        
+//         return in_array($script, $this->_scripts);  
+        
+//     }
+    
+//     public function RemoveScript($script) {
+        
+//         $existingScriptIndex = array_search($script, $this->_scripts);
+        
+//         if($existingScriptIndex !== false) {
+            
+//             unset($this->_scripts[$existingScriptIndex]);
+//             return true;
+            
+//         }
+        
+//         return false;
+        
+//     }
+    
+//     public function AddStyle($style) {
+        
+//         if(!$this->HasStyle($style)) {
+            
+//             $this->_styles[] = $style;
+//             return true;
+            
+//         }
+        
+//         return false;
+        
+//     }
+    
+//     public function HasStyle($style) {
+        
+//         return in_array($style, $this->_styles);
+        
+//     }
+    
+//     public function RemoveStyle($style) {
+        
+//         $existingStyleIndex = array_search($style, $this->_styles);
+        
+//         if($existingStyleIndex !== false) {
+            
+//             unset($this->_styles[$existingStyleIndex]);
+//             return true;
+            
+//         }
+        
+//         return false;
+        
+//     }
     
 }
