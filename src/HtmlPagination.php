@@ -297,8 +297,8 @@ class HtmlPagination extends HtmlElement {
         $previousPageNum = $currentPage - 1;
         $nextPageNum = $currentPage + 1;
         
-        $previousItem = $currentPage == 1 ? "<li class='$disabledCssClass'><span>$backLabel</span></li>" : "<li><a href='$targetUrlBase$previousPageNum'>Zurück</a></li>";
-        $nextItem = $currentPage == $lastPageNum ? "<li class='$disabledCssClass'><span>$nextLabel</span></li>" : "<li><a href='$targetUrlBase$nextPageNum'>Weiter</a></li>";
+        $previousItem = $currentPage == 1 ? "<li class='$disabledCssClass'><span>$backLabel</span></li>" : "<li><a href='$targetUrlBase$previousPageNum'>$backLabel</a></li>";
+        $nextItem = $currentPage == $lastPageNum ? "<li class='$disabledCssClass'><span>$nextLabel</span></li>" : "<li><a href='$targetUrlBase$nextPageNum'>$nextLabel</a></li>";
         
         $html .= "\t\t".$previousItem.PHP_EOL;
         $html .= "\t\t<li><a href='$targetUrlBase"."1'>1</a></li>".PHP_EOL;
