@@ -63,8 +63,16 @@ class HtmlPagination extends HtmlElement {
      */
     private $_listCssClass = 'pagination';
     
+    /**
+     * The text rendered on the "previous page" navigation link.
+     * @var string
+     */
     private $_backLabel = '&lt;';
     
+    /**
+     * The text rendered on the "next page" navigation link.
+     * @var string
+     */
     private $_nextLabel = '&gt;';
     
     // Constructor
