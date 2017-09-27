@@ -63,6 +63,10 @@ class HtmlPagination extends HtmlElement {
      */
     private $_listCssClass = 'pagination';
     
+    private $_backLabel = '&lt;';
+    
+    private $_nextLabel = '&gt;';
+    
     // Constructor
     
     public function __construct($totalNumberResults, $itemsPerPage, $targetUrl) {
@@ -216,6 +220,18 @@ class HtmlPagination extends HtmlElement {
         $this->_listCssClass = $listCssClass;
     }
     
+    public function SetBackLabel($label) {
+        $this->_backLabel = $label;
+    }
+    
+    public function GetBackLabel() { return $this->_backLabel; }
+    
+    public function SetNextLabel($label) {
+        $this->_nextLabel = $label;
+    }
+    
+    public function GetNextLabel() { return $this->_nextLabel; }
+    
     /**
      * Generates the HTML code for this pagination.
      * @return string The HTML code generated.
@@ -235,6 +251,9 @@ class HtmlPagination extends HtmlElement {
         $lastPageNum = $this->GetLastPageIndex();
         $disabledCssClass = $this->_disabledCssClass;
         $listCssClass = $this->_listCssClass;
+        
+        $backLabel = $this->_backLabel;
+        $nextLabel = $this->_nextLabel;
         
         $targetUrlBase = $this->_targetUrl.'?';
         
@@ -262,8 +281,8 @@ class HtmlPagination extends HtmlElement {
         $previousPageNum = $currentPage - 1;
         $nextPageNum = $currentPage + 1;
         
-        $previousItem = $currentPage == 1 ? "<li class='$disabledCssClass'><span>Zurück</span></li>" : "<li><a href='$targetUrlBase$previousPageNum'>Zurück</a></li>";
-        $nextItem = $currentPage == $lastPageNum ? "<li class='$disabledCssClass'><span>Weiter</span></li>" : "<li><a href='$targetUrlBase$nextPageNum'>Weiter</a></li>";
+        $previousItem = $currentPage == 1 ? "<li class='$disabledCssClass'><span>$backLabel</span></li>" : "<li><a href='$targetUrlBase$previousPageNum'>Zurück</a></li>";
+        $nextItem = $currentPage == $lastPageNum ? "<li class='$disabledCssClass'><span>$nextLabel</span></li>" : "<li><a href='$targetUrlBase$nextPageNum'>Weiter</a></li>";
         
         $html .= "\t\t".$previousItem.PHP_EOL;
         $html .= "\t\t<li><a href='$targetUrlBase"."1'>1</a></li>".PHP_EOL;
