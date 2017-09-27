@@ -220,16 +220,32 @@ class HtmlPagination extends HtmlElement {
         $this->_listCssClass = $listCssClass;
     }
     
+    /**
+     * Sets the text of the "previous page" navigation link.
+     * @param string $label The new text.
+     */
     public function SetBackLabel($label) {
         $this->_backLabel = $label;
     }
     
+    /**
+     * Gets the text of the "previous page" navigation link.
+     * @return string The text of the "previous page" navigation link.
+     */
     public function GetBackLabel() { return $this->_backLabel; }
     
+    /**
+     * Sets the text of the "next page" navigation link.
+     * @param string $label The new text.
+     */
     public function SetNextLabel($label) {
         $this->_nextLabel = $label;
     }
     
+    /**
+     * Gets the text of the "next page" navigation link.
+     * @return string The text of the "next page" navigation link.
+     */
     public function GetNextLabel() { return $this->_nextLabel; }
     
     /**
